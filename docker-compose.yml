@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: .  
+      dockerfile: Dockerfile  
+    container_name: backend-secondhand
+   
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-secondhand
+    restart: always
+    environment:
+      MYSQL_DATABASE: "secondhandDB"
+      MYSQL_USER: "secondhandadmin"
+      MYSQL_PASSWORD: "$231&ssdaDHT*/1"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_SSL_CIPHER: "TLSv1.2"
+    ports:
+      - "3366:3306"
+    expose:
+      - "3306"
