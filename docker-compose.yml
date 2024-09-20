@@ -8,8 +8,8 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-secondhand:3306/secondhandDB?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
-      SPRING_DATASOURCE_USERNAME: secondhandadmin
-      SPRING_DATASOURCE_PASSWORD: $231&ssdaDHT*/1
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
       - mysql
 
@@ -18,11 +18,11 @@ services:
     container_name: mysql-secondhand
     restart: always
     environment:
-      MYSQL_DATABASE: secondhandDB
-      MYSQL_USER: secondhandadmin
-      MYSQL_PASSWORD: $231&ssdaDHT*/1
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_SSL_CIPHER: TLSv1.2
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_SSL_CIPHER: ${MYSQL_SSL_CIPHER}
     ports:
       - "3366:3306"
     expose:
